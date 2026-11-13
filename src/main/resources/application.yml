@@ -1,0 +1,28 @@
+spring:
+  datasource:
+    url: ${URL}
+    driver-class-name: ${DRIVE}
+    username: ${USERNAME}
+    password: ${PASSWORD}
+    hikari:
+      maximum-pool-size: 40
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: false
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+    baseline-version: 0
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      lettuce:
+        pool:
+          max-active: 50
+          max-idle: 20
+          min-idle: 5
+      prefixes:
+        short-url: "short-url:"
